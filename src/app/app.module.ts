@@ -9,12 +9,14 @@ import { AuthentificationComponent } from './authentification/authentification.c
 import { AppareilViewComponent } from './appareil-view/appareil-view.component';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthService} from './services/auth.service';
+import { SinglAppareilComponent } from './singl-appareil/singl-appareil.component';
 
 // ici on definit des routes sous forme de tableau
 // ensuite on importe les RoutersModule
 const appRoutes : Routes =[
 
   {path: 'appareils', component: AppareilViewComponent},
+  {path: 'appareils/:id', component: SinglAppareilComponent},
   {path: 'Auth', component: AuthentificationComponent},
   {path: '', component: AppareilViewComponent}
 
@@ -26,6 +28,7 @@ const appRoutes : Routes =[
     AppareilComponent,
     AuthentificationComponent,
     AppareilViewComponent,
+    SinglAppareilComponent,
 
   ],
   imports: [
