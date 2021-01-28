@@ -1,1 +1,7 @@
-<p>authentification works!</p>
+<div class="container">
+  <div class="row">
+      <p>AUTHENTIFICATION </p>
+     <button class="bt btn-success" (click)="connected()" *ngIf="!authStatus">Connectez vous !</button>
+    <button class="bt btn-warning" (click)="disconnected()" *ngIf="authStatus">Se Deconnecter</button>
+  </div>
+</div>
