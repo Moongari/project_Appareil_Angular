@@ -1,0 +1,21 @@
+#NbreTotalAppareil{
+  font-family: "Trebuchet MS";
+  font-size: 20px;
+  color: darkblue;
+}
+
+#dateMiseAjour{
+  text-align: center;
+  font-size: 15px;
+  font-family: "Trebuchet MS";
+  Color: #24292e;
+}
+
+
+#appareilsTitle{
+  text-align: center;
+  font-size: 25px;
+  font-family: "Trebuchet MS";
+  Color: #24292e;
+
+}

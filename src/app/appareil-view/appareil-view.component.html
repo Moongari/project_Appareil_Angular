@@ -1,0 +1,30 @@
+  <div class="container">
+    <div class="row">
+  <div class="col-xs-12">
+    <h2 id="appareilsTitle">SUIVI DES APPAREILS DOMESTIQUES </h2>
+    <p id="dateMiseAjour">Mis à jour le :  {{ lastUpdate | async | date : "MM/dd/yyyy" }}</p>
+    <p id="NbreTotalAppareil"> Nombre d'appareils : {{getAllNumberAppareills()}}</p>
+    <ul class="list-group">
+
+      <app-appareil *ngFor="let appareil of appareils; let i = index"
+                    [indexOfAppareils]="i"
+                    [appareilName]="appareil.name"
+                    [appareilStatus]="appareil.status"></app-appareil>
+    </ul>
+  </div>
+  </div>
+  <br>
+      <p>{{messageAppareilON}}</p>
+      <p type="text" name="NbreAppareilOn" >{{getNombreAppareilOn()}}</p>
+      <hr>
+      <p>{{messageAppareilOff}}</p>
+      <p type="text" name="NbreAppareilOff" >{{getNombreAppareilOff()}}</p>
+  <hr>
+      <p [ngClass]="{'list-group-item': true,
+                      'list-group-item-success': message === 'Tout est désormais allumé',
+                      'list-group-item-danger': message === 'non disponible'}">{{message}}</p>
+      <button class="bt btn-success" [disabled] ="!isAuth" (click)="appareilOn()">Tout allumer</button>
+      <button class="bt btn-danger" [disabled] ="!isAuth" (click)="appareilOff()">Tout Eteindre</button>
+  </div>
+
+
