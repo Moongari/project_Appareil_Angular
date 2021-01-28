@@ -8,6 +8,7 @@ import {AppareilService} from './services/appareil.service';
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { AppareilViewComponent } from './appareil-view/appareil-view.component';
 import {RouterModule, Routes} from '@angular/router';
+import {AuthService} from './services/auth.service';
 
 // ici on definit des routes sous forme de tableau
 // ensuite on importe les RoutersModule
@@ -33,7 +34,8 @@ const appRoutes : Routes =[
     RouterModule.forRoot(appRoutes) // on dit au Router angular que toutes les routes se trouve dans cette constante
   ],
   providers: [
-    AppareilService
+    AppareilService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
