@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../services/auth.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-authentification',
@@ -13,15 +13,12 @@ export class AuthentificationComponent implements OnInit {
 
   constructor(private  authService : AuthService, private  router : Router) {
 
-
-
-
-
   }
 
   ngOnInit(): void {
 
     this.authStatus= this.authService.isAuth;
+
 
   }
 
@@ -30,7 +27,6 @@ export class AuthentificationComponent implements OnInit {
 
   connected(){
     this.authService.signIn().then( ()=>{
-
       this.authStatus = this.authService.isAuth;
       this.router.navigate(['appareils']);
     });
