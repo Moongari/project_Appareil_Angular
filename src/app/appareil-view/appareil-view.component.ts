@@ -98,7 +98,20 @@ export class AppareilViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.addElementAppareils();
     this.appareils = this.appareilservice.appareils;
 
+  }
+
+
+  addElementAppareils(){
+  const lampe = {
+    id: 7,
+    name: 'lampe',
+    status: 'Eteint',
+    photo : 'aucune'
+  };
+
+  this.appareilservice.appareils.push(lampe);
   }
 }
