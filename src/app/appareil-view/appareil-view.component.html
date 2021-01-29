@@ -9,7 +9,9 @@
       <app-appareil *ngFor="let appareil of appareils; let i = index"
                     [indexOfAppareils]="i"
                     [appareilName]="appareil.name"
-                    [appareilStatus]="appareil.status"></app-appareil>
+                    [appareilStatus]="appareil.status"
+                    [appareilImage]="appareil.photo"
+                    [id]="appareil.id"></app-appareil>
     </ul>
   </div>
   </div>
