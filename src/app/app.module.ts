@@ -10,15 +10,20 @@ import { AppareilViewComponent } from './appareil-view/appareil-view.component';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthService} from './services/auth.service';
 import { SinglAppareilComponent } from './singl-appareil/singl-appareil.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import {AuthGardService} from './services/auth-gard-service';
 
 // ici on definit des routes sous forme de tableau
 // ensuite on importe les RoutersModule
 const appRoutes : Routes =[
 
-  {path: 'appareils', component: AppareilViewComponent},
-  {path: 'appareils/:id', component: SinglAppareilComponent},
+  {path: 'appareils', canActivate:[AuthGardService], component: AppareilViewComponent},
+  {path: 'appareils/:id', canActivate:[AuthGardService], component: SinglAppareilComponent},
   {path: 'Auth', component: AuthentificationComponent},
-  {path: '', component: AppareilViewComponent}
+  {path: '', component: AppareilViewComponent},
+  {path: 'not-found', component: PagenotfoundComponent},
+  {path: '**', redirectTo: '/not-found'} // toujours place cela a la fin de toutes les routes
+
 
 ];
 
@@ -29,6 +34,8 @@ const appRoutes : Routes =[
     AuthentificationComponent,
     AppareilViewComponent,
     SinglAppareilComponent,
+    PagenotfoundComponent,
+
 
   ],
   imports: [
@@ -38,7 +45,8 @@ const appRoutes : Routes =[
   ],
   providers: [
     AppareilService,
-    AuthService
+    AuthService,
+    AuthGardService
   ],
   bootstrap: [AppComponent]
 })
