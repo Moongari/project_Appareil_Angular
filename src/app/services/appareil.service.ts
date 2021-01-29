@@ -1,18 +1,24 @@
+import {Router} from '@angular/router';
+
 export class AppareilService{
 
-  appareils =[
-    {name:'Machine a laver', status:'ALLUME'},
-    {name:'Ordinateur', status:'Eteint'},
-    {name:'Lave vaisselle', status:'Eteint'},
-    {name:'Refrigirateur', status:'ALLUME'},
-    {name:'Chaudiere', status:'Eteint'},
-    {name:'Radiateur', status:'ALLUME'},
+
+
+
+
+  appareils = [
+    {id:1 ,name: 'Machine a laver', status: 'ALLUME',photo:'/assets/images/machine_laver.png'},
+    {id:2 ,name: 'Ordinateur', status: 'Eteint',photo:'/assets/images/ordinateur.png'},
+    {id:3 ,name: 'Lave vaisselle', status: 'Eteint',photo:'/assets/images/laveVaisselle.png'},
+    {id:4 ,name: 'Refrigirateur', status: 'ALLUME',photo:'/assets/images/refrigirateur.png'},
+    {id:5 ,name: 'Chaudiere', status: 'Eteint',photo:'/assets/images/chaudiere.png'},
+    {id:6 ,name: 'Radiateur', status: 'ALLUME',photo:'/assets/images/radiateur.png'},
 
   ];
 
-  numberOnAppareils : number = 0;
-  numberOffAppareils : number = 0;
-  numberAllAppareils : number = 0;
+  numberOnAppareils = 0;
+  numberOffAppareils = 0;
+  numberAllAppareils = 0;
 
 
   OnSwitchOn()
@@ -20,8 +26,10 @@ export class AppareilService{
     for (const app of this.appareils){
 
       app.status = 'ALLUME';
-    }
 
+    }
+    this.numberOnAppareils = this.appareils.length;
+    this.numberOffAppareils = 0;
   }
 
   OnSwitchOff(){
@@ -30,25 +38,26 @@ export class AppareilService{
 
       app.status = 'Eteint';
     }
-
+    this.numberOffAppareils = this.appareils.length;
+    this.numberOnAppareils = 0;
 
   }
 
-
-switchOnOne(index :number){
+// allume un appareil
+switchOnOne(index: number){
     this.appareils[index].status = 'ALLUME';
-    this.numberOnAppareils +=1;
+    this.numberOnAppareils += 1;
 }
 
-
-  switchOffOne(index :number){
+// Eteint un appareil
+  switchOffOne(index: number){
     this.appareils[index].status = 'Eteint';
-    this.numberOffAppareils +=1;
+    this.numberOffAppareils += 1;
   }
 
-
+// Permet de gerer et d'indiquer le nombre d'appareils allumé
   getNumberOfOnAppareils(){
-    if(this.numberOnAppareils < 0 ){
+    if (this.numberOnAppareils < 0 ){
       this.numberOnAppareils = 0;
 
       return  this.numberOnAppareils;
@@ -64,11 +73,11 @@ switchOnOne(index :number){
 
   }
 
-
+// permet de lister et d'inscrire le nombre d'appareil Eteint
   getNumberOfOFFAppareils(){
-    if(this.numberOffAppareils <0 ){
+    if (this.numberOffAppareils < 0 ){
 
-      this.numberOffAppareils = 0
+      this.numberOffAppareils = 0;
       return  this.numberOffAppareils ;
     }else if (this.numberOffAppareils > this.appareils.length){
       this.numberOffAppareils = this.appareils.length;
@@ -83,6 +92,21 @@ switchOnOne(index :number){
   getNumberAllAppareils(){
 
     return this.appareils.length;
+
+  }
+
+  getAppareilById(id:number){
+
+    const nameAppareil = this.appareils.find(
+      (nameApp) => {
+       return  nameApp.id === id;
+      });
+
+    return nameAppareil;
+  }
+
+  getImageByAppareil(){
+
 
   }
 
