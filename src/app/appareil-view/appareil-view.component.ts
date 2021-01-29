@@ -39,6 +39,7 @@ export class AppareilViewComponent implements OnInit {
       },
       2000);
 
+    //Mise a jour de la date au bout de 3secondes
     this.lastUpdate = new Promise((resolve, reject) => {
       setTimeout(() => {
         const date = new Date();
@@ -51,7 +52,7 @@ export class AppareilViewComponent implements OnInit {
   OnAllumer(){
     this.message = 'Tout est désormais allumé';
     this.messageStatus = 'ALLUME';
-
+    this.appareilservice.numberOnAppareils = this.appareilservice.appareils.length;
 
   }
 
@@ -93,6 +94,7 @@ export class AppareilViewComponent implements OnInit {
 //permet d'eteindre tout les appareils
   appareilOff(){
     this.appareilservice.OnSwitchOff();
+    this.nombreAppareilOff = this.appareilservice.appareils.length;
   }
 
   ngOnInit(): void {
