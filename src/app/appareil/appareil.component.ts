@@ -13,6 +13,10 @@ export class AppareilComponent implements OnInit {
   @Input() appareilStatus :string;
   @Input() appareilName :string;
   @Input() indexOfAppareils : number; //on recupere l'index de chaque element du  tableau appareils
+  @Input() appareilImage: string;
+  @Input() id :number;
+
+
 
   constructor(private appareilserice : AppareilService) { this.appareilStatus = 'Eteint';}
   ngOnInit(): void {
@@ -48,5 +52,8 @@ export class AppareilComponent implements OnInit {
     this.appareilserice.numberOnAppareils -=1;
     this.appareilserice.switchOffOne(this.indexOfAppareils);
   }
+
+
+
 
 }
